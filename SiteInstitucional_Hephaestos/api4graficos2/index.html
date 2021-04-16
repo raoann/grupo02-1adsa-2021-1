@@ -249,26 +249,26 @@
 			//console.log("valores de temperatura: ", chart.config.data.datasets[0].data)
 			//console.log("valores de temperatura: ", chart.config.data.datasets[0].data);
 
-			var valores_temp = chartHumidity.config.data.datasets[0].data;
+			var valores_humidity = chartHumidity.config.data.datasets[0].data;
 
-			for (let i = 0; i < valores_temp.length; i++) {
-				if (valores_temp[i] <= 90.0) {
+			for (let i = 0; i < valores_humidity.length; i++) {
+				if (valores_humidity[i] <= 90.0) {
 					chartHumidity.data.datasets[0].pointBackgroundColor[i] = 'red';
 					chartHumidity.update();
 				}
-				if (valores_temp[i] > 90.1 && valores_temp[i] <= 90.6) {
+				if (valores_humidity[i] > 90.1 && valores_humidity[i] <= 90.6) {
 					chartHumidity.data.datasets[0].pointBackgroundColor[i] = 'yellow';
 					chartHumidity.update();
 				}
-				if (valores_temp[i] <= 91.5 && valores_temp[i] > 90.7)  {
+				if (valores_humidity[i] <= 91.5 && valores_humidity[i] > 90.7)  {
 					chartHumidity.data.datasets[0].pointBackgroundColor[i] = 'green';
 					chartHumidity.update();
 				}
-				if (valores_temp[i] < 92.0 && valores_temp[i] > 91.6) {
+				if (valores_humidity[i] < 92.0 && valores_humidity[i] > 91.6) {
 					chartHumidity.data.datasets[0].pointBackgroundColor[i] = 'yellow';
 					chartHumidity.update();
 				}
-				if  (valores_temp[i] > 92.1) {
+				if  (valores_humidity[i] > 92.1) {
 					chartHumidity.data.datasets[0].pointBackgroundColor[i] = 'red';
 					chartHumidity.update();
 				}
