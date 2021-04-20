@@ -1,9 +1,11 @@
-
+	
+</body>
+</html>
 <!doctype html>
 <html>
 
 <head>
-	<title>Line Chart</title>
+	<title>api Hephaestos</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 	<script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
 	<script src="http://www.chartjs.org/samples/latest/utils.js"></script>
@@ -18,13 +20,14 @@
 
 <body>
 	
-	<div style="display: none;">
-		<h1>Sensor LM35 - Temperatura</h1>
-			<section>
-				<h2>Média: <label id='average'>0.00</label></h2>
-				<h2>Média Hora: <label id='averageHour'>0.00</label></h2>
-			</section>
-			<section style="width:100%">
+	<div>
+		<h1>DHT11 - Temperatura</h1>
+		<section>
+			<h2>Média: <label id='average'>0.00</label></h2>
+			<h2>Média Hora: <label id='averageHour'>0.00</label></h2>
+		</section>
+		<img src="../imgs/quartis-temperatura.png" alt="quartis da temperatura" style="padding-left: 28%;">
+			<section style="width:80%">
 				<canvas id="chart"></canvas>
 		<section>
 	</div>
@@ -37,7 +40,8 @@
 			<h2 id="teste_media">Média: <label id='averageHumidity'>0.00</label></h2>
 			<h2>Média Hora: <label id='averageHourHumidity'>0.00</label></h2>
 		</section>
-		<section style="width:100%">
+		<img src="../imgs/quartis-umidade.png" alt="quartis da umidade" style="padding-left: 28%;">
+		<section style="width:80%">
 			<canvas id="chart-humidity"></canvas>
 		<section>
 	</div>
