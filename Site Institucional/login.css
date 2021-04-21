@@ -73,6 +73,10 @@ body {
     text-align: center;
 }
 
+.in_date:focus{
+    font-family: sans-serif;
+}
+
 .registro button{
     border: 0;
     background-color: #edb668;
@@ -99,6 +103,26 @@ a:hover{
     font-weight: bold;
     
 }
+
+
+
+
+.registro a:visited{
+    color: #e39b64;
+    text-decoration: none;
+   }
+
+.registro a:link{
+    text-decoration: none;
+    color: #e39b64;
+}
+
+.registro a:hover{
+    color: #e39b64;
+    font-weight: bold;
+    
+}
+
 
 
 /*destaques*/
