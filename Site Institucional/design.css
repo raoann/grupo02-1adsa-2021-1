@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-    width: 65%;
+    width: 75%;
     margin: auto;
 }
 
@@ -203,6 +203,7 @@ body {
     background-size: cover;
     text-align: center;
     height: 450px;
+    
 }
 
 .banner2 h1{
@@ -233,16 +234,28 @@ body {
 
 .produtos{
     overflow:auto;
-    padding-bottom: 10%;
+    
+}
+
+.box_geral{
+    
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
 }
 
 .produtos .box_1{
     background-image: url(img/umidade.png);
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 351px;
     width: 348px;
     text-align: center;
     float: left;
-    margin-left: 4%;
+
+    margin-right: 30px;
+    margin-left: 159px;
 }
 
 .produtos .box_1 button{
@@ -257,11 +270,13 @@ body {
 
 .produtos .box_2{
     background-image: url(img/temperatura.png);
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 351px;
     width: 348px;
     text-align: center;
     float: left;
-    margin-left: 5%;
+    margin-right: 30px;
 }
 .produtos .box_2 button{
     border: white solid 1px;
@@ -275,11 +290,13 @@ body {
 
 .produtos  .box_3{
     background-image: url(img/financeira.png);
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 351px;
     width: 348px;
     text-align: center;
     float: left;
-    margin-left: 5%;
+    margin-bottom: 100px;
 }
 .produtos .box_3 button{
     border: white solid 1px;
@@ -288,7 +305,7 @@ body {
     text-transform: uppercase;
     padding: 10px 20px;
     cursor: pointer;
-    margin-top: 250px;
+    margin-top: 270px;
 }
 
 .produtos .titulo{
@@ -554,6 +571,23 @@ a:hover{
 }
 
 .header2 button a:hover{
+    color: white;
+    font-weight: bold;
+    
+}
+
+
+.produtos button a:visited{
+    color: white;
+    text-decoration: none;
+   }
+
+.produtos button a:link{
+    text-decoration: none;
+    color: white;
+}
+
+.produtos button a:hover{
     color: white;
     font-weight: bold;
     
