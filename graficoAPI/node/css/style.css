@@ -1,0 +1,42 @@
+
+body{
+    font-family: Helvetica, sans-serif,Verdana;
+    background-color: #d5b369a8;
+}
+
+.inf_temp {
+    float: right;
+}
+
+.div_temperatura{
+    /* border: 2px #D5B369 solid; Bordas para analise de div */
+    border: 5px #ff8800 solid; 
+    border-radius: 5px;
+    width: 600px;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+    margin-right: 10px;
+}
+
+.div_umidade{ 
+    /* border: 2px #D5B369 solid; Bordas para analise de div */
+    border: 5px #ff8800 solid; 
+    border-radius: 5px;
+    width: 600px;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+}
+
+.div_sensores{
+    margin-left: 60px;
+    /* border: 2px red solid; Bordas para analise de div */
+    width: auto;
+    height: 100%;
+    display: inline-flex;
+    text-align: center;
+    
+}
+
+
