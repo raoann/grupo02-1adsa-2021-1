@@ -11,7 +11,9 @@
 
     <style>
 
-
+        body{
+            font-family: cursive;
+        }
 
         /* GRAFICOS - TEMPERATURA - UMIDADE - LUCROS E PERDAS  */
         .meu-grafico {
@@ -66,15 +68,38 @@
             margin: auto;
             padding-bottom: 5%;
         }
+
+        .blocoPerfil{
+            width: 50%;
+            margin: auto;
+            overflow: auto;
+            background-color: moccasin;
+            border-radius: 40px;
+        }
+
+        .perfilImg{
+            margin-left: 5%;
+        }
+
+        .blocoPerfil button{
+            margin-left: 80%;
+            
+        }
+
+        
     </style>
 </head>
 
 <body>
-    
+
     <div class="blocoPerfil">
-        <div class="perfilImg"><img style="float: left;" src="img/user.png" height="100" alt=""></div>
+        <div class="perfilImg">
+            <img style="float: left;" src="img/user.png" height="100" alt="">
+        </div>
+
         <p> Seja Bem vindo! <br><br>
             Acompanhe seu Gráfico! </p>
+
         <button>Sair</button>
     </div>
 
