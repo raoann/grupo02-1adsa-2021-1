@@ -229,6 +229,8 @@ body {
     padding: 10px 20px;
     margin-top: 30px;
     cursor: pointer;
+    border-radius: 50px;
+
 }
 
 
@@ -362,6 +364,7 @@ body {
     padding: 10px 20px;
     margin-top: 30px;
     cursor: pointer;
+    border-radius: 50px;
 }
 
 
@@ -436,6 +439,7 @@ body {
     padding: 10px 20px;
     margin-top: 30px;
     cursor: pointer;
+    border-radius: 50px;
 }
 
 
