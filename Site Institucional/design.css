@@ -238,7 +238,6 @@ body {
 }
 
 .box_geral{
-    display: inline-block;
     
     text-align: center;
     width: auto;
@@ -246,12 +245,13 @@ body {
     overflow: auto;
     margin: 0;
     display: flex;
+    margin-bottom: 25px;
     
     
 }
 
 .box_1{
-    background-image: url(img/umidade.png);
+    background-image: url(img/grafico_img.jpg);
     background-repeat: no-repeat;
     background-size: contain;
     height: 351px;
