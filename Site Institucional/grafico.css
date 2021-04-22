@@ -1,0 +1,196 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+.container {
+    width: 75%;
+    margin: auto;
+}
+/* GRAFICOS - TEMPERATURA - UMIDADE - LUCROS E PERDAS  */
+
+.header1{
+    background-color: #242424;
+    color: white;
+    overflow: auto;
+    padding: 7px;
+}
+.endereco{
+    margin: 0;
+    float: left;
+}
+
+.telefone{
+    margin: 0;
+    float: right;
+}
+.navbar{
+    list-style: none;
+    float: right;
+}
+
+.header2{
+    background-color: white;
+    overflow: auto;
+
+}
+
+.logo1{
+    height: 40px;
+    padding: 7px;
+    padding-top: 13px;
+    margin: 0;
+}
+
+.navbar{
+    list-style: none;
+    float: right;
+}
+
+.header2 .navbar li{
+    float: left;
+    margin-left: 20px;
+    text-transform: uppercase;
+    padding-top: 3%;
+    cursor: pointer;
+    
+}
+
+.header2 button{
+    border: 0;
+    background-color: #edb668;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    float: right;
+    margin-left: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.destaque1{
+    color:#e79c34; 
+}
+
+.meu-grafico {
+    margin-top: 5%;
+    width: 45%;
+    background-color: moccasin;
+    border-radius: 5%;
+    padding-bottom: 1%;
+}
+
+.meu-graficoTwo {
+    margin-top: 5%;
+    width: 45%;
+    background-color: moccasin;
+    border-radius: 5%;
+    padding-bottom: 1%;
+}
+
+.meu-graficoTree {
+    margin: 2% auto;
+    background-color: moccasin;
+    border-radius: 5%;
+    width: 45%;
+}
+
+.dados {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 25%;
+}
+
+.dados button {
+    margin-left: 40%;
+    border-radius: 5%;
+    background-color: saddlebrown;
+    color: white;
+    border-radius: 50px;
+    border: 0;
+    cursor: pointer;
+    height: 35px;
+    width: 95px;
+}
+
+.lucro {
+    width: 80%;
+    margin: auto;
+}
+
+.blocoPerfil{
+    width: 50%;
+    margin: auto;
+    overflow: auto;
+    background-color: moccasin;
+    border-radius: 40px;
+}
+
+.perfilImg{
+
+    margin:3% 0 0 5%;
+}
+
+.blocoPerfil button{
+    float: right;
+    margin-right: 8%;
+    border: 0;
+    background-color: #edb668;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+a:visited{
+    color: black;
+    text-decoration: none;
+   }
+
+a:link{
+    text-decoration: none;
+    color: black;
+}
+
+/*ESTILO DOS LINKS*/
+a:visited{
+    color: black;
+    text-decoration: none;
+   }
+
+a:link{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: #e39b64;
+    font-weight: bold;
+    
+}
+
+.footer{
+    background-color: #242424;
+    height: 130px;
+}
+
+.footer .box_item{
+    
+    padding-top: 50px;
+    text-align: center;
+    margin-left: auto;
+
+}
+
+.footer .box_item img{
+    height: 25px;
+    /* padding-right: 10%; */
+    margin-right: 1%;
+    text-align: center;
+    cursor: pointer;
+  
+}
+.footer .box_item .img:hover{
+    color: yellowgreen;
+    
+}

@@ -7,6 +7,16 @@ body{
 .inf_temp {
     float: right;
 }
+.div_sensores{
+    margin-left: -10.5%;
+    margin-top: 100px;
+    /* border: 2px red solid; Bordas para analise de div */
+    width: auto;
+    height: 100%;
+    display: inline-flex;
+    text-align: center;
+    
+}
 
 .div_temperatura{
     /* border: 2px #D5B369 solid; Bordas para analise de div */
@@ -29,16 +39,6 @@ body{
     background-color: white;
 }
 
-.div_sensores{
-    margin-left: -10.5%;
-    margin-top: 100px;
-    /* border: 2px red solid; Bordas para analise de div */
-    width: auto;
-    height: 100%;
-    display: inline-flex;
-    text-align: center;
-    
-}
 
 .header2 img{
     margin-top: 15px;
