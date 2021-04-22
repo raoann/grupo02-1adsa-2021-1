@@ -39,28 +39,33 @@
 
     <div class="conteudo">
         <div class="container">
-            <div class="package1">
-                <h3>Nome do produto</h3>
-                <input type="text" id="nomeProd" placeholder="Insira a nome do produto">
-                <h3>Unidade do produto</h3>
-                <input type="text" id="unidadeProd" placeholder="Insira a unidade - kg/g/l/ml...">
-                <h3>Quantidade em estoque</h3>
-                <input type="text" id="qtdEstoqueProd" placeholder="Insira a quantidade em estoque">
+            <div class="box">
+                <div class="package1">
+                    <h3>Nome do produto</h3>
+                    <input type="text" id="nomeProd" placeholder="Insira a nome do produto">
+                    <h3>Unidade do produto</h3>
+                    <input type="text" id="unidadeProd" placeholder="Insira a unidade - kg/g/l/ml...">
+                    <h3>Quantidade em estoque</h3>
+                    <input type="text" id="qtdEstoqueProd" placeholder="Insira a quantidade em estoque">
+                </div>
+
+                <div class="package2">
+                    <h3>Valor de produção por unidade</h3>
+                    <input type="text" id="valorCompraProduto" placeholder="Insira o valor de produção">
+
+                    <h3>Valor da venda por unidade</h3>
+                    <input type="text" id="valorVendaProduto" placeholder="Insira o valor da venda">
+
+                    <h3 style="color: #e39b64;">Percentual de falhas em produção</h3>
+                    <input type="text" id="percentualPerdaProduto"
+                        placeholder="Insira o percentual de falhas em produção">
+                </div>
+
+
             </div>
-
-            <div class="package2">
-                <h3>Valor de produção por unidade</h3>
-                <input type="text" id="valorCompraProduto" placeholder="Insira o valor de produção">
-
-                <h3>Valor da venda por unidade</h3>
-                <input type="text" id="valorVendaProduto" placeholder="Insira o valor da venda">
-
-                <h3 style="color: #e39b64;">Percentual de falhas em produção</h3>
-                <input type="text" id="percentualPerdaProduto" placeholder="Insira o percentual de falhas em produção">
+            <div class="botao">
+                <button id="analizar" onclick="Analise()">Simular análise de dados</button>
             </div>
-
-            <button id="analizar" onclick="Analise()">Simular análise de dados</button>
-
         </div>
     </div>
 
@@ -74,15 +79,15 @@
         <div class=" container">
 
             <br>
-            <img style="height: 80px; width: 80px; margin-left: 47%;" id="imgInvisivel" src="img/calculadora 2.png"
-                alt="contas" style="display: none;">
+            <center><img style="height: 80px; width: 80px;" id="imgInvisivel" src="img/calculadora 2.png" alt="contas"
+                    style="display: none;"></center>
 
 
             <br>
             <div class="box">
                 <div class="box_resultado">
                     <div id="resultAnalise" style="text-align: justify;">
-                     </div>
+                    </div>
 
                     <br>
                     <div id="nocoes"></div>
@@ -101,16 +106,16 @@
         <div class="container">
 
             <div class="box_item">
-                <a href="https://www.facebook.com" target="_blank" > <img src="img/facebook.png" alt="facebook" onmouseover="this.src='img/facebook2.png'"
-                    onmouseout="this.src='img/facebook.png'"> </a>
-     
-     
-                    <a href="https://www.instagram.com" target="_blank"><img src="img/instagram.png" alt="instagram" onmouseover="this.src='img/instagram2.png'"
-                     onmouseout="this.src='img/instagram.png'"></a>
-     
-     
-                    <a href="https://twitter.com" target="_blank"><img src="img/twitter.png" alt="twitter" onmouseover="this.src='img/twitter2.png'"
-                     onmouseout="this.src='img/twitter.png'"></a>
+                <a href="https://www.facebook.com" target="_blank"> <img src="img/facebook.png" alt="facebook"
+                        onmouseover="this.src='img/facebook2.png'" onmouseout="this.src='img/facebook.png'"> </a>
+
+
+                <a href="https://www.instagram.com" target="_blank"><img src="img/instagram.png" alt="instagram"
+                        onmouseover="this.src='img/instagram2.png'" onmouseout="this.src='img/instagram.png'"></a>
+
+
+                <a href="https://twitter.com" target="_blank"><img src="img/twitter.png" alt="twitter"
+                        onmouseover="this.src='img/twitter2.png'" onmouseout="this.src='img/twitter.png'"></a>
             </div>
         </div>
     </div>
@@ -138,7 +143,7 @@
         var percentualLucro = ((valorV - valorC) / valorV) * 100;
 
         resultAnalise.innerHTML =
-            `<b style="margin-left: 330px;font-size: 18px; ">Resultados</b><br><br><br><br>`+
+            `<center><b style=font-size: 18px; ">Resultados</b></center><br><br><br><br>` +
             `Você possui ${qtd} de <span style="color: bluelight;">${nome}</span> em estoque;<br>` +
             `Você tem um total de <span style="color: green;">R$${(valorV * qtd).toFixed(2)}</span> em estoque de <span style="color: bluelight;">${nome}</span>;<br>` +
             `Vai lucrar <span style="color: green;">R$${(valorV - valorC).toFixed(2)}</span> em cada ${unidade} de <span style="color: bluelight;">${nome}</span> vendido(a).<br>`;
@@ -153,4 +158,3 @@
 
     }
 </script>
-
