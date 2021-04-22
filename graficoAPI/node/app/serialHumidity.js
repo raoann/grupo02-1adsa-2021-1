@@ -18,7 +18,8 @@ class NewArduinoHumidity {
     
     SetConnection(){
         setInterval(() => {
-            let data_float = sensors.dht11(({minHum:90, maxHum:92})); // Aqui definimos o minimo e maximo do dht11
+            let data_float = sensors.dht11(({minHum:88, maxHum:93})); // Aqui definimos o minimo e maximo do dht11
+            
 
             if (this.__listDataTemp.length === 59) {
                 let sum = this.__listDataTemp.reduce((a, b) =>  a + b, 0);

@@ -178,7 +178,7 @@
 
 			for (let i = 0; i < valores_temperature.length; i++) {
 				if (valores_temperature[i] < 21.0) {
-					chart.data.datasets[0].pointBackgroundColor[i] = 'red';
+					chart.data.datasets[0].pointBackgroundColor[i] = '#7030A0';
 					chart.update();
 
 
@@ -193,7 +193,7 @@
 
 				}
 				if (valores_temperature[i] > 24.2 && valores_temperature[i] < 25) {
-					chart.data.datasets[0].pointBackgroundColor[i] = 'yellow';
+					chart.data.datasets[0].pointBackgroundColor[i] = '#F97033';
 					chart.update();
 				}
 				if (valores_temperature[i] > 25.1) {
