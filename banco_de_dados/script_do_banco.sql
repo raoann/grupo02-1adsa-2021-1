@@ -2,6 +2,9 @@ CREATE DATABASE bd_oaktruffle;
 
 use bd_oaktruffle;
 
+select*from tbTestes;
+
+
 CREATE TABLE tbEmpresa (
 	id_empresa INT PRIMARY KEY auto_increment
     ,nome_empresa varchar (100) not null
@@ -10,7 +13,7 @@ CREATE TABLE tbEmpresa (
     ,cidade_empresa varchar (100) not null
     ,bairro_empresa varchar (100) not null
     ,logradouro_empresa varchar (100) not null
-    ,cep_empresa char (10)
+    ,cep_empresa char (10) not null
 );
 
 CREATE TABLE tbFuncionario (
@@ -48,6 +51,11 @@ CREATE TABLE tbDadosColetados(
     ,fkSensor int
     ,foreign key (fkSensor) REFERENCES tbSensor (id_sensor)
     );
+    
+create table tbTestes(
+	id_teste int primary key auto_increment
+    ,nome_teste varchar (45)
+);
 
 insert into tbEmpresa VALUES(null,'TrufaCom','1546897','SP','São Paulo','lageado','rua','08452020')
 						   ,(null,'TrufaInc','5468465','MG','Belo Horizonte','cruzeiro do sul','avenida','0865423')
@@ -106,5 +114,8 @@ select * from tbEmpresa as emp join tbFuncionario as func on func.fkEmpresa = em
                                join tbSensor as sen on sen.fkQuadrante = qua.id_quadrante
                                join tbDadosColetados as dad on dad.fkSensor = sen.id_sensor
                                where emp.nome_empresa like 'Multi%';
-                               
-								
+                               							
+select*from tbFuncionario;
+		
+desc tbfuncionario;
+
