@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Empresa</title>
+    <link rel="shortcut icon" href="img/logoBrancoEmpresa.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="header1">
+        <div class="container">
+            <h5 class="endereco">Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</h5>
+
+            <h5 class="telefone"> (11) 97766-8899</h5>
+        </div>
+    </div>
+
+    <div class="header2">
+        <div class="container">
+            <a href="site.html"><img class="logo1" src="img/logo2.png"></a>
+
+            <a href="site.html"> <button> X </button></a>
+        </div>
+    </div>
+
+    <div class="registro">
+        <div class="container">
+            <div class="titulo">
+                <h1>Cadastre a sua Empresa!</h1>
+                <p >Você ja tem uma conta? <br>
+                    <span class="destaque1"><a href="login.html">Entre aqui!</a></span></p>
+            </div>
+
+            <div class="login">
+                <p>Nome da empresa</p>
+                <input id="ipt_nome" placeholder="Digite o nome da empresa">
+                <p>CNPJ</p>
+                <input id="ipt_cnpj" placeholder="Digite o cnpj da empresa">
+                <p>Logradouro</p>
+                <input id="ipt_logradouro" placeholder="Digite o logradouro da empresa">
+                <p>Bairro</p>
+                <input id="ipt_bairro" placeholder="Digite o bairro da empresa">
+                <p>Cidade</p>
+                <input id="ipt_cidade" placeholder="Digite a cidade da empresa">
+                <p>Estado</p>
+                <input id="ipt_estado" placeholder="Digite o estado da empresa">
+                <p>Senha</p>
+                <input type="password" id="ipt_senha" placeholder="Digite a sua senha">
+                <br>
+                
+                <button onclick="cadastro()">Cadastrar</button>
+            </div>
+
+            
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    function cadastro(){
+        var nome = ipt_nome.value;
+        var cnpj = ipt_cnpj.value;
+        var senha = ipt_senha.value;
+
+        var logradouro = ipt_logradouro.value;
+        var bairro = ipt_bairro.value;
+        var cidade = ipt_cidade.value;
+        var estado = ipt_bairro.value;
+
+        var nomeMinimo = nome.length;
+        var cnpjMinimo = cnpj.length;
+        var minimoSenha = senha.length;
+        var logradouroMinimo = logradouro.length;
+        var bairroMinimo = bairro.length;
+        var cidadeMinimo = cidade.length;
+        var estadoMinimo = estado.length;
+
+        if (nomeMinimo <= 0 || cnpjMinimo <= 0 || minimoSenha <= 0 || logradouroMinimo <=0 || bairroMinimo <= 0 || cidadeMinimo <=0 || estadoMinimo <= 0) {
+            alert('Campos Vazios!')
+        } else if (nomeMinimo < 3) {
+            alert('Nome Inválido!')
+        } else if (cnpjMinimo >= 15 || cnpjMinimo <= 13){
+            alert('Cnpj Inválido')
+        }else if
+        (minimoSenha < 5) {
+            alert('Senha Fraca')
+        } else {
+            alert('Cadastrado com sucesso!')
+            window.location.href = 'cadastro.html'
+        }
+    }
+</script>
