@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="shortcut icon" href="img/logoBrancoEmpresa.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="header1">
+        <div class="container">
+            <h5 class="endereco">Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</h5>
+
+            <h5 class="telefone"> (11) 97766-8899</h5>
+        </div>
+    </div>
+
+    <div class="header2">
+        <div class="container">
+            <a href="index.html"><img class="logo1" src="img/logo2.png"></a>
+
+            <a href="index.html"> <button> X </button></a>
+        </div>
+    </div>
+
+    <div class="registro">
+        <div class="container">
+            <div class="titulo">
+                <h1>Crie a sua conta!</h1>
+                <p>Você ja tem uma conta? <br>
+                    <span class="destaque1"><a href="login.html">Entre aqui!</a></span></p>
+            </div>
+
+            <div class="login">
+                <form id="form_cadastro" method="post" onsubmit="return cadastro()">
+                    <p>Nome</p>
+                    <input id="ipt_nome" name="nome_funcionario" placeholder="Digite o seu nome">
+                    <p>E-mail</p>
+                    <input id="ipt_email" name="email_funcionario" placeholder="Digite o seu e-mail">
+                    <p>Senha</p>
+                    <input type="password" id="ipt_senha" name="senha_funcionario" placeholder="Digite a sua senha">
+                    <p>Data de Nascimento</p>
+                    <input placeholder="Data de nascimento" name="dataNasc_funcionario" class="in_date" onfocus="(this.type='date')"
+                        onblur="(this.type='text')">
+                    <p>CPF</p>
+                    <input id="cpf" name="cpf_funcionario" placeholder="Digite o seu CPF">
+                    <p>Identificador empresa</p>
+                    <input id="fkEmpresa" name="fkEmpresa" placeholder="Insira o identificador">
+                    <br>
+                    <br><br><br><input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green"><br><br><br>
+                </form>
+            </div>
+
+            <!-- <div class="teste">
+                <form id="form_cadastro_teste" method="post" onsubmit="return cadastro()">
+                    <p>Usuario teste</p>
+                    <input id="ipt_nome" name="in_teste" placeholder="Digite o seu nome">
+                    <br><input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green"><br>
+                </form>
+            </div> -->
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function cadastro() {
+        /* var nome = ipt_nome.value;
+        var email = ipt_email.value;
+        var senha = ipt_senha.value
+        var arroba = email.indexOf('@');
+        var ponto = email.indexOf('.');
+
+        var nomeMinimo = nome.length;
+        var emailMinimo = email.length
+        var minimoSenha = senha.length; */
+
+        /* if (nomeMinimo <= 0 || emailMinimo <= 0 || minimoSenha <= 0) {
+            alert('Campos Vazios!')
+        } else if (arroba < 0 || ponto < 0) {
+            alert('Email inválido!')
+        } else if (nomeMinimo < 3) {
+            alert('Nome Inválido!')
+        } else if (minimoSenha < 5) {
+            alert('Senha Fraca')
+        } else {
+            alert('Cadastrado com sucesso!')
+            window.location.href = 'login.html'
+        } */
+    
+            var login = new URLSearchParams(new FormData(form_cadastro));
+            fetch("tbfuncionarios/cadastrar", {
+                method: "POST",
+                body: login
+            }).then(function (response) {
+
+                if (response.ok) {
+
+                    window.location.href = 'login.html';
+
+                } else {
+
+                    console.log('Erro de cadastro!');
+                    response.text().then(function (resposta) {
+                        /* div_erro.innerHTML = resposta; */
+                        
+                    });
+
+                }
+            });
+
+            return false;
+     
+
+    }
+</script>

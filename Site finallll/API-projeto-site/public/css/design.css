@@ -1,0 +1,608 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    
+}
+
+.container {
+    width: 75%;
+    margin: auto;
+}
+
+.header1{
+    background-color: #242424;
+    color: white;
+    overflow: auto;
+    padding: 7px;
+}
+
+.endereco{
+    margin: 0;
+    float: left;
+}
+
+.telefone{
+    margin: 0;
+    float: right;
+}
+
+.header2{
+    background-color: white;
+    overflow: auto;
+
+}
+
+.logo1{
+    height: 40px;
+    padding: 7px;
+    padding-top: 13px;
+    margin: 0;
+}
+
+.navbar{
+    list-style: none;
+    float: right;
+}
+
+.header2 .navbar li{
+    float: left;
+    margin-left: 20px;
+    text-transform: uppercase;
+    padding-top: 3%;
+    cursor: pointer;
+}
+
+.header2 button{
+    border: 0;
+    background-color: #edb668;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    float: right;
+    margin-left: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+
+/* BANNER */
+
+.banner{
+    background-color: #232323;
+    background-image: url(img/Prancheta1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+
+}
+
+
+.banner .box{
+    float: right;
+    padding-top: 90px;
+    
+}
+
+.banner .box .p1{
+    font-family: sans-serif;
+    color: white;
+    float: right;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 83px;
+    margin: 0;
+}
+
+.banner .box button{
+    border:0;
+    background-color:#edb668;
+    color: white;
+    text-transform: uppercase;
+    float: right;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 50px;
+}
+
+
+
+/* DIVISÃO */
+
+.divisão{
+    background-color:#242424;
+    height: 90px;
+}
+
+
+/* missão visão valores*/
+
+.mvv .titulo p{
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 25px;
+    text-align:center;
+    margin: 0;
+    padding-top: 7%;
+    padding-bottom: 3%;
+    
+}
+
+
+.mvv img{
+    height: 120px;
+}
+
+.mvv {
+    overflow: auto;
+    
+}
+
+.box_item{
+    float: left;
+    text-align: center;
+    width: 21.3%;
+    padding: 6%;
+    
+}
+
+
+.footer{
+    background-color: #242424;
+    height: 130px;
+    
+}
+
+.footer .box_item img{
+    height: 25px;
+    padding-left: 10%;
+    text-align: center;
+    cursor: pointer;
+    
+}
+.footer .box_item{
+   
+   padding: 50px;
+   text-align: center;
+   margin-left: 34%;
+}
+
+
+.footer .box_item .img:hover{
+    color: yellowgreen;
+    
+}
+
+
+/*destaques*/
+
+.destaque1{
+    color:#e79c34; 
+}
+
+.destaque2{
+    color: #e39b64;
+}
+
+.destaque3{
+    color: #242424;
+}
+
+
+
+
+/* produtos */
+
+
+
+
+.banner2{
+    background-color: #232323;
+    background-image: url(img/Prancheta3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    height: 450px;
+    
+}
+
+.banner2 h1{
+    margin: 0;
+    color: white;
+    font-size: 50px;
+    font-family: sans-serif;
+    padding-top: 140px;
+}
+
+.banner2 p{
+    margin: 0;
+    color: white;
+    padding-top: 20px;
+    font-size: 18px;
+}
+
+.banner2 button{
+    border: 0;
+    background-color:#edb668;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 50px;
+
+}
+
+
+.produtos{
+    overflow:auto;
+    
+}
+
+.box_geral{
+    
+    text-align: center;
+    width: auto;
+    height: auto;
+    overflow: auto;
+    margin: 0;
+    display: flex;
+    margin-bottom: 25px;
+    
+    
+}
+
+.box_1{
+    background-image: url(img/grafico_img.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 351px;
+    width: 348px;
+    text-align: center;
+    margin: auto;
+    margin-right: 10px;
+    
+    
+    
+}
+
+.box_1 button{
+    border: white solid 1px;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 270px;
+    
+}
+
+.box_2{
+    background-image: url(img/temperatura.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 351px;
+    width: 348px;
+    text-align: center;
+    margin-right: 10px;
+    margin:auto;
+    
+}
+.box_2 button{
+    border: white solid 1px;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 270px;
+}
+
+.box_3{
+    background-image: url(img/financeira.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 351px;
+    width: 348px;
+    text-align: center;    
+    margin-bottom: 100px;
+    margin: auto;
+    margin-left: 10px;
+}
+.box_3 button{
+    border: white solid 1px;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 270px;
+}
+
+.produtos .titulo{
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 25px;
+    text-align:center;
+    margin: 0;
+    padding-top: 7%;
+    padding-bottom: 3%;
+    
+}
+
+
+
+/* PÁGINA CLIENTES */
+
+
+.banner3{
+    background-color: #232323;
+    background-image: url(img/prancheta4.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    height: 450px;
+}
+.banner3 h1{
+    margin: 0;
+    color: white;
+    font-size: 50px;
+    font-family: sans-serif;
+    padding-top: 140px;
+}
+.banner3 p{
+    margin: 0;
+    color: white;
+    padding-top: 20px;
+    font-size: 18px;
+}
+.banner3 button{
+    border: 0;
+    background-color:#edb668;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+
+/*clientes*/
+
+.clientes{
+    overflow: auto;
+    padding-bottom: 10%;
+}
+
+.clientes .box_clientes{
+    float: left;
+    text-align: center;
+    margin-top: 40px;
+    margin-left: 120px;
+}
+.clientes img{
+    float: left;
+    max-width:800px;
+    max-height:250px;
+    width: auto;
+    height: auto;
+}
+.clientes span{
+    float: left;
+    padding: 30px;
+    text-align: justify;
+}
+.clientes .titulo{
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 25px;
+    text-align:center;
+    margin: 0;
+    padding-top: 7%;
+    padding-bottom: 3%;  
+}
+
+
+
+
+
+/* PÁGINA EQUIPE */
+
+
+.banner4{
+    background-color: #232323;
+    background-image: url(img/prancheta5.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    height: 450px;
+}
+.banner4 h1{
+    margin: 0;
+    color: white;
+    font-size: 50px;
+    font-family: sans-serif;
+    padding-top: 140px;
+}
+.banner4 p{
+    margin: 0;
+    color: white;
+    padding-top: 20px;
+    font-size: 18px;
+}
+.banner4 button{
+    border: 0;
+    background-color:#edb668;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+
+
+/*equipe*/
+
+.equipe .titulo p{
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 25px;
+    text-align:center;
+    margin: 0;
+    padding-top: 7%;
+    padding-bottom: 3%;
+    
+}
+
+
+.equipe img{
+    height: 260px;
+}
+
+.equipe {
+    overflow: auto;
+    
+}
+
+.equipe .box_item{
+    float:left;
+    text-align: center;
+    width: 25%;
+    padding: 4%;
+    
+}
+
+.equipe .box_item1{
+    float:left;
+    text-align: center;
+    width: 25%;
+    padding: 4%;
+    margin-left: 187px;
+}
+
+
+
+
+
+
+/*ESTILO DOS LINKS*/
+a:visited{
+    color: black;
+    text-decoration: none;
+   }
+
+a:link{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: #e39b64;
+    font-weight: bold;
+    
+}
+
+
+
+.banner a:visited{
+    color: white;
+    text-decoration: none;
+   }
+
+.banner a:link{
+    text-decoration: none;
+    color: white;
+}
+
+.banner a:hover{
+    color: white;
+    font-weight: bold;
+    
+}
+
+
+.banner2 a:visited{
+    color: white;
+    text-decoration: none;
+   }
+
+.banner2 a:link{
+    text-decoration: none;
+    color: white;
+}
+
+.banner2 a:hover{
+    color: white;
+    font-weight: bold;
+    
+}
+
+
+.banner3 a:visited{
+    color: white;
+    text-decoration: none;
+   }
+
+.banner3 a:link{
+    text-decoration: none;
+    color: white;
+}
+
+.banner3 a:hover{
+    color: white;
+    font-weight: bold;
+    
+}
+
+.banner4 a:visited{
+    color: white;
+    text-decoration: none;
+   }
+
+.banner4 a:link{
+    text-decoration: none;
+    color: white;
+}
+
+.banner4 a:hover{
+    color: white;
+    font-weight: bold;
+    
+}
+
+.header2 button a:visited{
+    color: white;
+    text-decoration: none;
+   }
+
+.header2 button a:link{
+    text-decoration: none;
+    color: white;
+}
+
+.header2 button a:hover{
+    color: white;
+    font-weight: bold;
+    
+}
+
+
+.produtos button a:visited{
+    color: white;
+    text-decoration: none;
+   }
+
+.produtos button a:link{
+    text-decoration: none;
+    color: white;
+}
+
+.produtos button a:hover{
+    color: white;
+    font-weight: bold;
+    
+}

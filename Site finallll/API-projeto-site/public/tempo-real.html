@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo Real</title>
+    <link rel="shortcut icon" href="img/logoBrancoEmpresa.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./grafico.css">
+    <link rel="stylesheet" href="css/cultivo.css">
+    <link rel="stylesheet" href="css/cultivos.css">
+    <link rel="stylesheet" href="css/dashboards.css">
+
+    <!--Link para código do ChartsJS-->
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <style>
+        /* Classes CSS para exemplos de alertas */
+
+        .alerta-baixo {
+            color: rgb(38, 0, 255);
+
+        }
+
+        .primeiro-quartil {
+            color: #d1d11c;
+        }
+
+        .normal {
+            color: #29cc1a;
+        }
+
+        .terceiro-quartil {
+            color: #FFB400;
+        }
+
+        .alerta-alto {
+            color: red;
+
+        }
+    </style>
+</head>
+
+<body onload="atualizacaoPeriodica()">
+    <div class="header1">
+        <div class="container">
+            <h5 class="endereco"></h5>
+
+            <h5 class="telefone"></h5>
+        </div>
+    </div>
+    <div class="header2">
+        <div class="container">
+            <img class="logo1" src="img/logo2.png">
+
+            <a href="login.html"> <button> Sair </button> </a>
+            <a href="index_logado.html"> <button> Voltar </button> </a>
+
+        </div>
+    </div>
+
+    <div class="img_index">
+        <img src="img/barraSimbolos.png" height="100px" alt="">
+    </div>
+    <div class="container">
+        <div class="box-items">
+            <div class="items">
+                <h1 id="idcultivo" value="1">Cultivo A1</h1>
+                <div class="valores">
+                    <div class="valor" id="div_temperatura">Temperatura sendo obtida...</div>
+                    <div class="alerta" style="margin-bottom: 5px;" id="div_alerta_temperatura"> </div>
+                    <div class="valor" id="div_umidade">Umidade sendo obtida...</div>
+                    <div class="alerta_umidd" id="div_alerta_umidade"></div>
+                </div>
+
+                <div class="alertas">
+
+
+                </div>
+            </div>
+
+            <div class="items">
+                <h1 id="idcultivo" value="2">Cultivo A2</h1>
+                <div class="valores">
+                    <div class="valor" id="div_temperatura2">Temperatura sendo obtida...</div>
+                    <div class="alerta" style="margin-bottom: 5px;" id="div_alerta_temperatura2"> </div>
+                    <div class="valor" id="div_umidade2">Umidade sendo obtida...</div>
+                    <div class="alerta_umidd" id="div_alerta_umidade2"></div>
+                </div>
+
+                <div class="alertas">
+
+
+                </div>
+            </div>
+
+            <div class="items">
+                <h1 id="idcultivo" value="3">Cultivo A3</h1>
+                <div class="valores">
+                    <div class="valor" id="div_temperatura3">Temperatura sendo obtida...</div>
+                    <div class="alerta" style="margin-bottom: 5px;" id="div_alerta_temperatura3"> </div>
+                    <div class="valor" id="div_umidade3">Umidade sendo obtida...</div>
+                    <div class="alerta_umidd" id="div_alerta_umidade3"></div>
+                </div>
+
+                <div class="alertas">
+
+
+                </div>
+            </div>
+
+            <div class="items">
+                <h1 id="idcultivo" value="4">Cultivo A4</h1>
+                <div class="valores">
+                    <div class="valor" id="div_temperatura4">Temperatura sendo obtida...</div>
+                    <div class="alerta" style="margin-bottom: 5px;" id="div_alerta_temperatura4"> </div>
+                    <div class="valor" id="div_umidade4">Umidade sendo obtida...</div>
+                    <div class="alerta_umidd" id="div_alerta_umidade4"></div>
+                </div>
+
+                <div class="alertas">
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</html>
+
+<script>
+    function atualizacaoPeriodica() {
+        obterdadosporcultivo(1);
+        obterdadosporcultivo(2);
+        obterdadosporcultivo(3);
+        obterdadosporcultivo(4);
+        setTimeout(atualizacaoPeriodica, 5000);
+    }
+
+    function obterdadosporcultivo(idcultivo) {
+        //aguardar();
+        fetch(`/leituras/tempo-real/${idcultivo}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        // aqui, após registro. use os nomes 
+                        // dos atributos que vem no JSON 
+                        var dados = {
+                            temperatura: resposta.temperatura_coletada,
+                            umidade: resposta.umidade_coletada
+                        }
+
+                        alertar(resposta.temperatura_coletada, resposta.umidade_coletada, idcultivo);
+                        atualizarTela(dados, idcultivo);
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do cultivo p/ gráfico: ${error.message}`);
+            });
+    }
+
+    var icon_temp = ``;
+    var icon_umi = ``;
+
+    function alertar(temperatura, umidade, idcultivo) {
+        // padrão para meu alerta
+        var limites = {
+            max_temperatura: 25,
+            min_temperatura: 21,
+            primeiro_quartil: 21.9,
+            terceiro_quartil: 24.9,
+            esperado_temp: 22,
+
+            max_umidade: 92,
+            min_umidade: 90,
+            primeiro_quartil: 90.6,
+            terceiro_quartil: 91.6,
+            esperado_temp: 90.7,
+
+
+        };
+
+        // zerar aviso de mensagem
+        var mensagem_temperatura = '';
+        var mensagem_umidade = '';
+        var classe_temperatura = 'alerta';
+        var classe_umidade = 'alerta_umidd';
+
+        /* else{
+            icon = 'img/check.png';
+        } */
+
+        //Comparando temperatura
+        if (temperatura < 21) {
+            mensagem_temperatura = 'Temperatura baixa demais! <br>';
+            classe_temperatura = 'alerta alerta-baixo';
+            icon_temp = 'img/critico_2.png';
+        } else if (temperatura <= 21.9) {
+            mensagem_temperatura = 'Temperatura um pouco baixa! <br>';
+            classe_temperatura = 'alerta primeiro-quartil';
+            icon_temp = 'img/atencao.png';
+            //21.9 e 24.1
+        } else if (temperatura <= 24.1) {
+            mensagem_temperatura = 'Temperatura ideal! <br>';
+            classe_temperatura = 'alerta normal';
+            icon_temp = 'img/check.png';
+        } else if (temperatura <= 25) {
+            mensagem_temperatura = 'Temperatura um pouco alta! <br>';
+            classe_temperatura = 'alerta terceiro-quartil';
+            icon_temp = 'img/caution.png';
+        } else if (temperatura > 25) {
+            mensagem_temperatura += 'Temperatura alta demais! <br>';
+            classe_temperatura = 'alerta alerta-alto';
+            icon_temp = 'img/critico_1.png';
+        }
+
+
+
+
+
+//umidade: 92.04%
+
+        // comparando umidade
+        if (umidade < 90) {
+            mensagem_umidade = 'Umidade baixa demais! <br>';
+            classe_umidade = 'alerta_umidd alerta-baixo';
+            icon_umi = 'img/critico_2.png';
+        } else if (umidade <= 90.6) {
+            mensagem_umidade = 'Umidade um pouco baixa! <br>';
+            classe_umidade = 'alerta_umidd primeiro-quartil';
+            icon_umi = 'img/atencao.png';
+        } else if (umidade <= 91.5) {
+            mensagem_umidade = 'Umidade ideal! <br>';
+            classe_umidade = 'alerta_umidd normal';
+            icon_umi = 'img/check.png';
+        } else if (umidade < 92) {
+            mensagem_umidade = 'Umidade um pouco baixa! <br>';
+            classe_umidade = 'alerta_umidd alerta-baixo';
+            icon_umi = 'img/caution.png';
+        } else if (umidade => 92.1) {
+            mensagem_umidade += 'Umidade alta demais! <br>';
+            classe_umidade = 'alerta_umidd alerta-alto';
+            icon_umi = 'img/critico_1.png';
+        }
+
+
+        // escolhendo qual alterar
+        var div_temperatura_alterar
+        var div_umidade_alterar
+
+        if (idcultivo == 1) {
+            div_temperatura_alterar = div_alerta_temperatura;
+            div_umidade_alterar = div_alerta_umidade;
+        } else if (idcultivo == 2) {
+            div_temperatura_alterar = div_alerta_temperatura2;
+            div_umidade_alterar = div_alerta_umidade2;
+        } else if (idcultivo == 3) {
+            div_temperatura_alterar = div_alerta_temperatura3;
+            div_umidade_alterar = div_alerta_umidade3;
+        } else if (idcultivo == 4) {
+            div_temperatura_alterar = div_alerta_temperatura4;
+            div_umidade_alterar = div_alerta_umidade4;
+        }
+
+        // alterando
+        div_temperatura_alterar.innerHTML = mensagem_temperatura;
+        div_temperatura_alterar.className = classe_temperatura;
+
+        div_umidade_alterar.innerHTML = mensagem_umidade;
+        div_umidade_alterar.className = classe_umidade;
+    }
+
+    function atualizarTela(dados, idcultivo) {
+        console.log('iniciando atualização da tela...');
+
+        // escolhendo qual alterar
+        var div_temperatura_alterar
+        var div_umidade_alterar
+
+        if (idcultivo == 1) {
+            div_temperatura_alterar = div_temperatura
+            div_umidade_alterar = div_umidade
+        } else if (idcultivo == 2) {
+            div_temperatura_alterar = div_temperatura2
+            div_umidade_alterar = div_umidade2
+        } else if (idcultivo == 3) {
+            div_temperatura_alterar = div_temperatura3
+            div_umidade_alterar = div_umidade3
+        } else if (idcultivo == 4) {
+            div_temperatura_alterar = div_temperatura4
+            div_umidade_alterar = div_umidade4
+        }
+
+        div_temperatura_alterar.innerHTML =
+            `<img src='${icon_temp}' height='70px'><br>Temperatura: ${dados.temperatura.toFixed(2)}º `;
+
+        div_umidade_alterar.innerHTML =
+            `<img src='${icon_umi}' height='70px'><br>Umidade: ${dados.umidade.toFixed(2)}%`;
+
+    }
+
+    function sendData() {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:9001/api/sendData', false);
+        http.send(null);
+    }
+
+    // Descomente abaixo se quiser inserir dados a cada X segundos  
+    setInterval(() => {
+        sendData();
+    }, 5000);
+</script>

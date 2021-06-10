@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graficos</title>
+    <link rel="shortcut icon" href="img/logoBrancoEmpresa.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./grafico.css">
+    <link rel="stylesheet" href="css/cultivo.css">
+    <link rel="stylesheet" href="css/cultivos.css">
+
+    <!--Link para código do ChartsJS-->
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- funcoes -->
+    <script type="text/javascript" src="funcoes.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body onload=obterDadosGraficoPrimeiraVez()>
+    <div class="header1">
+        <div class="container">
+            <h5 class="endereco"></h5>
+
+            <h5 class="telefone"></h5>
+        </div>
+    </div>
+    <div class="header2">
+        <div class="container">
+            <img class="logo1" src="img/logo2.png">
+
+            <a href="login.html"> <button> Sair </button> </a>
+
+        </div>
+    </div>
+
+    <div class="blocoPerfil_index">
+        <div class="perfilImg">
+            <img style="float: left; margin: auto;" src="img/user.png" height="100px" alt="">
+        </div>
+        <div>
+            <p> Seja Bem vindo, <b id="b_usuario"></b>!</p>
+            <p class="txtSelecione">Selecione uma funcionalidade. </p>
+
+        </div>
+    </div>
+    <div class="container">
+        <a href="tempo-real.html"><button class="btn_zonas_index">Status dos sensores</button></a>
+        <a href="graficos.html"><button class="btn_zonas_index">Consulta em grafico</button></a>
+    </div>
+
+</html>
+
+<script>
+    verificar_autenticacao();
+</script>

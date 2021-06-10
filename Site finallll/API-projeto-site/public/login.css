@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;   
+}
+.container {
+    width: 65%;
+    margin: auto;
+}
+.header1{
+    background-color: #242424;
+    color: white;
+    overflow: auto;
+    padding: 7px;
+}
+.endereco{
+    margin: 0;
+    float: left;
+}
+.telefone{
+    margin: 0;
+    float: right;
+}
+.header2{
+    background-color: white;
+    overflow: auto;
+
+}
+
+.logo1{
+    height: 40px;
+    padding: 7px;
+    padding-top: 13px;
+    margin: 0;
+}
+
+.header2 button{
+    border: 0;
+    background-color: #edb668;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    float: right;
+    margin-left: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+/*registro*/
+
+.registro .titulo{
+    font-family: sans-serif;
+    text-align:center;
+    margin: 0;
+    padding-top: 7%;
+    padding-bottom: 3%;
+}
+.registro .titulo h1{
+    font-size: 45px;
+    margin: 0;
+}
+.registro .titulo p{
+    margin: 0;
+    padding-top: 9px;
+}
+
+.registro .login{
+    text-align: center;
+}
+.registro .login input{
+    border: 0;
+    padding: 10px 60px;
+    border-bottom: #8a8a8a solid 1px;
+    text-align: center;
+}
+
+.in_date:focus{
+    font-family: sans-serif;
+}
+
+.registro button{
+    border: 0;
+    background-color: #edb668;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-bottom: 45px;
+}
+
+/*ESTILO DOS LINKS*/
+a:visited{
+    color: white;
+    text-decoration: none;
+   }
+
+a:link{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    color: #e39b64;
+    font-weight: bold;
+    
+}
+
+
+
+
+.registro a:visited{
+    color: #e39b64;
+    text-decoration: none;
+   }
+
+.registro a:link{
+    text-decoration: none;
+    color: #e39b64;
+}
+
+.registro a:hover{
+    color: #e39b64;
+    font-weight: bold;
+    
+}
+
+
+
+/*destaques*/
+
+.destaque1{
+    color:#e79c34; 
+}

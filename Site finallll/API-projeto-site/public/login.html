@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="shortcut icon" href="img/logoBrancoEmpresa.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="header1">
+        <div class="container">
+            <h5 class="endereco">Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</h5>
+
+            <h5 class="telefone"> (11) 97766-8899</h5>
+        </div>
+    </div>
+
+    <div class="header2">
+        <div class="container">
+            <a href="index.html"><img class="logo1" src="img/logo2.png"></a>
+
+            <a href="index.html"> <button> X </button></a>
+        </div>
+    </div>
+
+    <div class="registro">
+        <div class="container">
+            <div class="titulo">
+                <h1>Entre na sua conta</h1>
+                <p>Você ainda não tem uma conta? <br>
+                    <span class="destaque1"> <a href="cadastro.html">Registre-se aqui!</a></span></p>
+                <p>Cadastre a sua empresa <a href="cadastroEmpresa.html">aqui!</a></p>
+            </div>
+
+
+            <div class="login">
+                <form id="form_login" method="post" onsubmit="return entrar()">
+                    <p>E-mail</p>
+                    <input id="ipt_email" name="login_html" placeholder="Digite o seu e-mail">
+                    <p>Senha</p>
+                    <input type="password" name="senha" id="ipt_senha" placeholder="Digite a sua senha">
+                    <br>
+                    <button onclick="entrar()">Entrar</button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    
+    function entrar() {            
+            var login = new URLSearchParams(new FormData(form_login));
+        fetch("/tbfuncionarios/autenticar", {
+            method: "POST",
+            body: login
+        }).then(resposta => {
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    sessionStorage.login_usuario_meuapp = json.login_html;
+                    sessionStorage.nome_usuario_meuapp = json.nome_funcionario;
+                    window.location.href = 'index_logado.html';
+                });
+
+            } else {
+                alert('Login inválido')
+
+                console.log('Erro de login!');
+                
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+        }
+</script>

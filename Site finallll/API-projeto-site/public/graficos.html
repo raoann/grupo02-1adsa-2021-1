@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graficos</title>
+    <link rel="shortcut icon" href="img/logoBrancoEmpresa.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./grafico.css">
+    <link rel="stylesheet" href="css/cultivo.css">
+    <link rel="stylesheet" href="css/cultivos.css">
+
+    <!--Link para código do ChartsJS-->
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body onload=obterDadosGraficoPrimeiraVez()>
+
+    <div class="header1">
+        <div class="container">
+            <h5 class="endereco"></h5>
+
+            <h5 class="telefone"></h5>
+        </div>
+    </div>
+    <div class="header2">
+        <div class="container">
+            <img class="logo1" src="img/logo2.png">
+
+            <a href="login.html"> <button> Sair </button> </a>
+            <a href="index_logado.html"> <button> Voltar </button> </a>
+
+
+            
+
+
+        </div>
+    </div>
+    <div class="blocoPerfil">
+        <div class="perfilImg">
+            <img style="float: left;" src="img/user.png" height="100" alt="">
+        </div>
+        <div>
+            <p style="font-size: 25px;"><br>
+                Selecione sua zona de cultivo. </p>
+            <p></p>
+        </div>
+        
+
+    </div>
+    <div class="blocoPerfil_quartil">
+        <img src="img/Quartis_2.png" height="130-px" alt="">
+
+    </div>
+
+    <body class="body_menu">
+        <div class="fundo_api">
+            <div class="header2">
+            </div>
+
+            <div class="container">
+                <div class="div_zonas">
+                    <button id="botaoCultivo1" onclick="chamargraficos(1)" class="btn_zonas">Cultivo A1</button>
+                    <button id="botaoCultivo2" onclick="chamargraficos(2)" class="btn_zonas">Cultivo A2</button>
+                    <button id="botaoCultivo3" onclick="chamargraficos(3)" class="btn_zonas">Cultivo A3</button>
+                    <button id="botaoCultivo4" onclick="chamargraficos(4)" class="btn_zonas">Cultivo A4</button>
+                </div>
+                <div class="div_temperatura">
+                    <div style="width:85%; margin: auto">
+                        <div id="div_aguarde">Dados sendo obtidos...</div>
+                        <canvas id="canvas_grafico"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="footer"> footer tava bugado, então foi removido temporariamente
+            <div class="container">
+
+                <div class="box_item">
+                    <a href="https://www.facebook.com" target="_blank"> <img src="img/facebook.png" alt="facebook"
+                            onmouseover="this.src='img/facebook2.png'" onmouseout="this.src='img/facebook.png'"> </a>
+
+
+                    <a href="https://www.instagram.com" target="_blank"><img src="img/instagram.png" alt="instagram"
+                            onmouseover="this.src='img/instagram2.png'" onmouseout="this.src='img/instagram.png'"></a>
+
+
+                    <a href="https://twitter.com" target="_blank"><img src="img/twitter.png" alt="twitter"
+                            onmouseover="this.src='img/twitter2.png'" onmouseout="this.src='img/twitter.png'"></a>
+
+                </div>
+            </div>
+        </div> -->
+
+    </body>
+
+</html>
+
+<script>
+    let proximaAtualizacao;
+
+    window.onload = obterDadosGraficoPrimeiraVez(1);
+
+    function alterarCoresBotoes(idcultivo) {
+        console.log("executei alterarCoresBotoes")
+        botaoCultivo1.className = "btn_zonas"
+        botaoCultivo2.className = "btn_zonas"
+        botaoCultivo3.className = "btn_zonas"
+        botaoCultivo4.className = "btn_zonas"
+
+        if (idcultivo == "1") {
+            botaoCultivo1.className += " btn-now"
+        } else if (idcultivo == "2") {
+            botaoCultivo2.className += " btn-now"
+        } else if (idcultivo == "3") {
+            botaoCultivo3.className += " btn-now"
+        } else if (idcultivo == "4") {
+            botaoCultivo4.className += " btn-now"
+        }
+    }
+
+    function chamargraficos(idcultivo) {
+        console.log("executei chamargraficos")
+        obterDadosGraficoPrimeiraVez(idcultivo)
+        //atualizarGrafico(idcultivo)
+
+        alterarCoresBotoes(idcultivo);
+    }
+
+    //
+    function configurarGrafico() {
+        console.log("executei configurarGrafico")
+        var configuracoes = {
+            responsive: true,
+            animation: {
+                duration: 500
+            },
+            hoverMode: 'index',
+            stacked: false,
+            title: {
+                display: true,
+                text: 'Histórico recente de temperatura e umidade'
+            },
+            scales: {
+                yAxes: [{
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+
+                    display: true,
+                    position: 'left',
+                    id: 'y-temperatura',
+                }, {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'right',
+                    id: 'y-umidade',
+
+                    // grid line settings
+                    gridLines: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                }],
+            }
+        };
+
+        return configuracoes;
+    }
+
+    function obterDadosGraficoPrimeiraVez(idcultivo) {
+        console.log("executei obterDadosGraficoPrimeiraVez")
+
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/leituras/ultimas/${idcultivo}`, {
+                cache: 'no-store'
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+
+                        var dados = {
+                            labels: [],
+                            datasets: [{
+                                    yAxisID: 'y-temperatura',
+                                    label: 'Temperatura',
+
+                                    borderColor: ['#EB820C'],
+                                    backgroundColor: ['#ff880031'],
+                                    pointStyle: 'circle',
+                                    pointRadius: 10.5,
+                                    pointBackgroundColor: [],
+
+                                    data: []
+                                },
+                                {
+                                    yAxisID: 'y-umidade',
+                                    label: 'Umidade',
+                                    borderColor: ['blue'],
+                                    backgroundColor: '#629ad996',
+                                    pointStyle: 'circle',
+                                    pointRadius: 10.5,
+                                    pointBackgroundColor: [],
+                                    data: []
+                                }
+                            ]
+                        };
+
+                        for (i = 0; i < resposta.length; i++) {
+                            var registro = resposta[i];
+                            dados.labels.push(registro.momento_grafico);
+                            dados.datasets[0].data.push(registro.temperatura_coletada);
+                            dados.datasets[1].data.push(registro.umidade_coletada);
+
+                            // arrumando cores dos circulos .pointBackgroundColor[i] = '#7030A0';
+
+                            // dados.datasets[0].pointBackgroundColor.push('#7030A0');
+
+
+                            var temperatura = dados.datasets[0].data[i];
+                            var umidade = dados.datasets[1].data[i];
+
+                            if (temperatura < 21.0) {
+                                dados.datasets[0].pointBackgroundColor.push('#7030A0');
+                            } else if (temperatura > 21.0 && temperatura <= 21.9) {
+                                dados.datasets[0].pointBackgroundColor.push('yellow');
+                            } else if (temperatura > 22 && temperatura < 24.1) {
+                                dados.datasets[0].pointBackgroundColor.push('green');
+                            } else if (temperatura > 24.2 && temperatura < 25) {
+                                dados.datasets[0].pointBackgroundColor.push('#F97033');
+                            } else {
+                                dados.datasets[0].pointBackgroundColor.push('red');
+                            }
+
+
+
+                            if (umidade <= 90.0) {
+                                dados.datasets[1].pointBackgroundColor.push('#7030A0');
+                                /* chartHumidity.update(); */
+                            }
+                            if (umidade > 90.1 && umidade <= 90.6) {
+                                dados.datasets[1].pointBackgroundColor.push('yellow');
+                                /* chartHumidity.update(); */
+                            }
+                            if (umidade <= 91.5 && umidade > 90.7) {
+                                dados.datasets[1].pointBackgroundColor.push('green');
+                                /* chartHumidity.update(); */
+                            }
+                            if (umidade < 92.0 && umidade > 91.6) {
+                                dados.datasets[1].pointBackgroundColor.push('#F97033');
+                                /* chartHumidity.update(); */
+                            }
+                            if (umidade > 92.1) {
+                                dados.datasets[1].pointBackgroundColor.push('red');
+                                /* chartHumidity.update(); */
+                            }
+
+
+                        }
+                        console.log(JSON.stringify(dados));
+                        div_aguarde.style.display = 'none';
+                        plotarGrafico(dados, idcultivo);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    //
+    // só mexer se quiser alterar o tempo de atualização
+    // ou se souber o que está fazendo!
+    function atualizarGrafico(idcultivo, dados) {
+        console.log("executei atualizarGrafico")
+        fetch(`/leituras/tempo-real/${idcultivo}`, {
+                cache: 'no-store'
+            }).then(function (response) {
+                console.log("Estou tentando pegar idcultivo = ", idcultivo)
+                if (response.ok) {
+                    response.json().then(function (novoRegistro) {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                        console.log(`Dados atuais do gráfico: ${dados}`);
+
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro.momento_grafico); // incluir um novo momento
+                        dados.datasets[0].data.shift(); // apagar o primeiro de temperatura
+                        dados.datasets[1].data.shift(); // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro
+                            .temperatura_coletada); // incluir uma nova leitura de temperatura
+                        dados.datasets[1].data.push(novoRegistro
+                            .umidade_coletada); // incluir uma nova leitura de umidade
+
+                        console.log("meu cultivo é o " + idcultivo);
+
+
+                        /* alert(dados.datasets[0].data[6]); */
+                        var ultimoCirculo = dados.datasets[0].data;
+                        var ultimoCirculoUmi = dados.datasets[1].data;
+
+                        
+
+
+
+                        for (let i = 0; i < ultimoCirculo.length; i++) {
+                            if (ultimoCirculo[i] < 21.0) {
+                                dados.datasets[0].pointBackgroundColor[i] = '#7030A0';
+
+                            } else if (ultimoCirculo[i] > 21.0 && ultimoCirculo[i] <= 21.9) {
+                                dados.datasets[0].pointBackgroundColor[i] = 'yellow';
+
+                            } else if (ultimoCirculo[i] > 22 && ultimoCirculo[i] <= 24.1) {
+                                dados.datasets[0].pointBackgroundColor[i] = 'green';
+
+                            } else if (ultimoCirculo[i] > 24.2 && ultimoCirculo[i] <= 25) {
+                                dados.datasets[0].pointBackgroundColor[i] = '#F97033';
+
+                            } else if (ultimoCirculo[i] > 25) {
+                                dados.datasets[0].pointBackgroundColor[i] = 'red';
+                            }
+                        }
+
+
+
+                        for (let i = 0; i < ultimoCirculoUmi.length; i++) {
+                            if (ultimoCirculoUmi[i] <= 90.0) {
+                                dados.datasets[1].pointBackgroundColor[i]='#7030A0';
+                                /* chartHumidity.update(); */
+                            }
+                            if (ultimoCirculoUmi[i] > 90.1 && ultimoCirculoUmi[i] <= 90.6) {
+                                dados.datasets[1].pointBackgroundColor[i]='yellow';
+                                /* chartHumidity.update(); */
+                            }
+                            if (ultimoCirculoUmi[i] <= 91.5 && ultimoCirculoUmi[i] > 90.7) {
+                                dados.datasets[1].pointBackgroundColor[i]='green';
+                                /* chartHumidity.update(); */
+                            }
+                            if (ultimoCirculoUmi[i] < 92.0 && ultimoCirculoUmi[i] > 91.6) {
+                                dados.datasets[1].pointBackgroundColor[i]='#F97033';
+                                /* chartHumidity.update(); */
+                            }
+                            if (ultimoCirculoUmi[i] > 92.1) {
+                                dados.datasets[1].pointBackgroundColor[i]='red';
+                                /* chartHumidity.update(); */
+                            }
+                        }
+
+
+                        window.grafico_linha.update();
+
+
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idcultivo, dados), 5000);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idcultivo, dados), 5000);
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    // só altere aqui se souber o que está fazendo!
+    function plotarGrafico(dados, idcultivo) {
+        console.log("executei plotarGrafico")
+        console.log('iniciando plotagem do gráfico...');
+
+        var ctx = canvas_grafico.getContext('2d');
+        window.grafico_linha = Chart.Line(ctx, {
+            data: dados,
+            options: configurarGrafico()
+        });
+
+        setTimeout(() => atualizarGrafico(idcultivo, dados), 2000);
+    }
+
+
+    function sendData() {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:9001/api/sendData', false);
+        http.send(null);
+
+
+    }
+
+    // Descomente abaixo se quiser inserir dados a cada X segundos
+    setInterval(() => {
+        sendData();
+    }, 2000);
+</script>

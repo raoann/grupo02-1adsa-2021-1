@@ -1,0 +1,126 @@
+
+body{
+    font-family: Helvetica, sans-serif,Verdana;
+    background-color: #d5b369a8;
+}
+
+.inf_temp {
+    float: right;
+}
+.div_sensores{
+    margin-left: -10.5%;
+    margin-top: 100px;
+    /* border: 2px red solid; Bordas para analise de div */
+    width: auto;
+    height: 100%;
+    display: inline-flex;
+    text-align: center;
+    
+}
+
+.div_temperatura{
+    /* border: 2px #D5B369 solid; Bordas para analise de div */
+    border: 5px #ff8800 solid; 
+    border-radius: 5px;
+    width: 600px;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+    margin-right: 10px;
+}
+
+.div_umidade{ 
+    /* border: 2px #D5B369 solid; Bordas para analise de div */
+    border: 5px #ff8800 solid; 
+    border-radius: 5px;
+    width: 600px;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+}
+
+
+.header2 img{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.header2 h1{
+ float: left;
+ padding: 0;
+ margin: 0;
+ margin-top: 24px;
+ 
+}
+
+.header2 button{
+    float: right;
+}
+
+.div_conteudo{
+    border: rgb(82, 82, 82) solid 2px;
+    text-align: center;
+    width: 500px;
+    height: auto;
+    margin: auto;
+    color: rgb(82, 82, 82);
+    background: white;
+    margin-top: 30px;
+    margin-bottom: 10%;
+    border-radius: 5px;
+    
+}
+
+.fundo_api{
+    width: 100%;
+    height: 200px;
+    
+}
+
+.div_zonas{
+    border: #525252 2px solid;
+    border-radius: 15px;
+    text-align: center;
+    /* margin: auto; */
+    width: 85%;
+    height: auto;
+    margin: auto;
+    background-color: white;
+    padding: 15px;
+    margin-top: 21px;
+    
+}
+
+.body_menu{
+    background-image: url(../estufa.jpg);
+    width: 100;
+
+}
+
+.btn_zonas {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 30px;
+    font-weight: 600;
+    padding: 30px;
+    background-color: #525252;
+    border: solid #FFFFFF 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    
+ }
+ 
+ .btn_zonas:hover {
+    background: rgb(100, 100, 100);
+    border: solid #FFFFFF 1px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+ }
+
