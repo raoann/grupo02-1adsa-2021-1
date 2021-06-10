@@ -125,10 +125,27 @@ a:hover{
     
 }
 
-
-
 /*destaques*/
 
 .destaque1{
     color:#e79c34; 
 }
+
+/* extra gif-carregamento */
+.extra {
+    margin: 10px;
+}
+
+.extra img {
+   height: 50px;
+   visibility: hidden;
+}
+
+.extra .msg_erro {
+    background-color: #e39b64; 
+    color: black; 
+    visibility: hidden;
+    width: 25%;
+    margin-left: 37%;
+}
+

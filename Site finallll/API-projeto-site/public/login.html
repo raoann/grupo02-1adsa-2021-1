@@ -33,7 +33,8 @@
             <div class="titulo">
                 <h1>Entre na sua conta</h1>
                 <p>Você ainda não tem uma conta? <br>
-                    <span class="destaque1"> <a href="cadastro.html">Registre-se aqui!</a></span></p>
+                    <span class="destaque1"> <a href="cadastro.html">Registre-se aqui!</a></span>
+                </p>
                 <p>Cadastre a sua empresa <a href="cadastroEmpresa.html">aqui!</a></p>
             </div>
 
@@ -45,23 +46,30 @@
                     <p>Senha</p>
                     <input type="password" name="senha" id="ipt_senha" placeholder="Digite a sua senha">
                     <br>
-                    <button onclick="entrar()">Entrar</button>
+                    <button id="btn_entrar" onclick="entrar()">Entrar</button>
                 </form>
+
+                <div class="extra">
+                    <div id="div_erro" class="msg_erro">
+                    </div>
+
+                    <img src="https://www.emuca.pt/.resources/emuca/webresources/assets/img/loading.gif"
+                        id="img_aguarde">
+                </div>
+
             </div>
-
-
         </div>
     </div>
-
 
 </body>
 
 </html>
 
 <script>
-    
-    function entrar() {            
-            var login = new URLSearchParams(new FormData(form_login));
+
+    function entrar() {
+        aguardar();
+        var login = new URLSearchParams(new FormData(form_login));
         fetch("/tbfuncionarios/autenticar", {
             method: "POST",
             body: login
@@ -77,10 +85,8 @@
                 });
 
             } else {
-                alert('Login inválido')
-
                 console.log('Erro de login!');
-                
+
                 resposta.text().then(texto => {
                     console.error(texto);
                     finalizar_aguardar(texto);
@@ -89,5 +95,18 @@
         });
 
         return false;
-        }
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
+
+    function finalizar_aguardar(resposta) {
+        btn_entrar.disabled = false;
+        img_aguarde.style.visibility = 'hidden';
+        div_erro.style.visibility = 'visible';
+        div_erro.innerHTML = resposta;
+    }
 </script>
