@@ -139,7 +139,7 @@
 		function get_data() {
 
 			var http = new XMLHttpRequest();
-			http.open('GET', 'http://localhost:3000/api', false);
+			http.open('GET', 'http://localhost:3001/api', false);
 			http.send(null);
 
 			var obj = JSON.parse(http.responseText);
@@ -171,6 +171,7 @@
 			//console.log("valores de temperatura: ", chart.config.data.datasets[0].data);
 
 			var valores_temperature = chart.config.data.datasets[0].data;
+			
 
 			for (let i = 0; i < valores_temperature.length; i++) {
 				if (valores_temperature[i] < 21.0) {
@@ -257,7 +258,7 @@
 		function get_dataHumidity() {
 
 			var http = new XMLHttpRequest();
-			http.open('GET', 'http://localhost:3000/api/humidity', false);
+			http.open('GET', 'http://localhost:3001/api/humidity', false);
 			http.send(null);
 
 			var obj = JSON.parse(http.responseText);
@@ -374,7 +375,7 @@
 		function get_switch() {
 
 			var http = new XMLHttpRequest();
-			http.open('GET', 'http://localhost:3000/api/switch', false);
+			http.open('GET', 'http://localhost:3001/api/switch', false);
 			http.send(null);
 
 			var obj = JSON.parse(http.responseText);
@@ -456,7 +457,7 @@
 		function get_lumi() {
 
 			var http = new XMLHttpRequest();
-			http.open('GET', 'http://localhost:3000/api/luminosity', false);
+			http.open('GET', 'http://localhost:3001/api/luminosity', false);
 			http.send(null);
 
 			var obj = JSON.parse(http.responseText);
