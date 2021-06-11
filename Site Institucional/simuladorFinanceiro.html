@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <link rel="shortcut icon" href="../imgs/logoBrancoEmpresa.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="simulador.css">
+    <title>Simulador Financeiro Hephaestos</title>
+    <link rel="shortcut icon" href="img/logoBrancoEmpresa.png" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <div class="header1"> 
+        <div class="container">
+            <h5 class="endereco">Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</h5>
+
+            <h5 class="telefone"> (11) 97766-8899</h5>
+        </div>
+    </div>
+
+    <div class="header2">
+        <div class="container">
+            <img class="logo1" src="img/logo2.png">
+
+            <a href="produtos.html"> <button> X </button></a>
+        </div>
+    </div>
+    <center>
+        <div class="container">
+            <h1>Simulador Financeiro de Produção</h1>
+        </div>
+    </center>
+    <br>
+    <br>
+
+
+
+    <div class="conteudo">
+        <div class="container">
+            <div class="box">
+                <div class="package1">
+                    <h3>Nome do produto</h3>
+                    <input type="text" id="nomeProd" placeholder="Insira a nome do produto">
+                    <h3>Quantidade de gramas do produto</h3>
+                    <input type="text" id="unidadeProd" placeholder="Insira a unidade - gramas">
+                    <h3>Quantidade em estoque</h3>
+                    <input type="text" id="qtdEstoqueProd" placeholder="Insira a quantidade em estoque">
+                </div>
+
+                <div class="package2">
+                    <h3>Valor de produção por unidade</h3>
+                    <input type="text" id="valorCompraProduto" placeholder="Insira o valor de produção">
+
+                    <h3>Valor da venda por unidade</h3>
+                    <input type="text" id="valorVendaProduto" placeholder="Insira o valor da venda">
+
+                    <h3 style="color: #e39b64;">Percentual de falhas em produção</h3>
+                    <input type="text" id="percentualPerdaProduto"
+                        placeholder="Insira o percentual de falhas em produção">
+                </div>
+
+
+            </div>
+            <div class="botao">
+                <button id="analizar" onclick="Analise()">Simular análise de dados</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <br>
+    <br>
+    <br>
+
+    <div class="contentAnalise" style=>
+        <div class=" container">
+
+            <br>
+            <center><img style="height: 80px; width: 80px;" id="imgInvisivel" src="img/calculadora 2.png" alt="contas"
+                    style="display: none;"></center>
+
+
+            <br>
+            <div class="box">
+                <div class="box_resultado">
+                    <div id="resultAnalise" style="text-align: justify;">
+                    </div>
+
+                    <br>
+                    <div id="nocoes"></div>
+
+                    <div class="container">
+                        <div id="precoCompra"></div>
+                        <div id="precoVenda"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+
+            <div class="box_item">
+                <a href="https://www.facebook.com" target="_blank"> <img src="img/facebook.png" alt="facebook"
+                        onmouseover="this.src='img/facebook2.png'" onmouseout="this.src='img/facebook.png'"> </a>
+
+
+                <a href="https://www.instagram.com" target="_blank"><img src="img/instagram.png" alt="instagram"
+                        onmouseover="this.src='img/instagram2.png'" onmouseout="this.src='img/instagram.png'"></a>
+
+
+                <a href="https://twitter.com" target="_blank"><img src="img/twitter.png" alt="twitter"
+                        onmouseover="this.src='img/twitter2.png'" onmouseout="this.src='img/twitter.png'"></a>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+
+<script>
+    function Analise() {
+
+        document.querySelector('.contentAnalise').style.display = 'block';
+
+
+        var qtd = Number(qtdEstoqueProd.value);
+        var unidade = unidadeProd.value;
+        var nome = nomeProd.value;
+        var perda = percentualPerdaProduto.value;
+
+        var valorC = Number(valorCompraProduto.value);
+        var valorV = Number(valorVendaProduto.value);
+
+        var percentualLucro = ((valorV - valorC) / valorV) * 100;
+
+        resultAnalise.innerHTML =
+            `<center><b style=font-size: 18px; ">Resultados</b></center><br><br><br><br>` +
+            `Você possui ${qtd} de <span style="color: bluelight;">${nome}</span> em estoque;<br>` +
+            `Você tem um total de <span style="color: green;">R$${(valorV * qtd).toFixed(2)}</span> em estoque de <span style="color: bluelight;">${nome}</span>;<br>` +
+            `Vai lucrar <span style="color: green;">R$${(valorV - valorC).toFixed(2)}</span> em cada ${unidade} de <span style="color: bluelight;">${nome}</span> vendido(a).<br>`;
+
+        nocoes.innerHTML =
+            `Falhas que levam a perda de <span style="color: red;">${perda}%</span> do estoque, resultam num déficit de <span style="color: green;">R$${(((valorV * qtd) / 100) * perda).toFixed(2)}</span> em sua carteira<br>`;
+        nocoes.innerHTML +=
+            `Produzindo cada unidade por <span style="color: green;">R$${valorC.toFixed(2)}</span> e vendendo por <span style="color: green;">R$${valorV.toFixed(2)}</span>, sua margem de lucro será de <span style="color: green;">${percentualLucro.toFixed(1)}%</span>`;
+
+        precoVenda.style = `height: 100%; width: ${percentualLucro}%; float: left; background-color: GREEN;`;
+        precoCompra.style = `height: 100%; width: ${100 - percentualLucro}%; float: left; background-color: red;`;
+
+    }
+</script>
